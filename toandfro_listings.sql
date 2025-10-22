@@ -16,32 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `listings`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `listings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
+CREATE TABLE `listings` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `lastname` varchar(50) NOT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `email` varchar(350) NOT NULL,
-  `password_hash` varchar(255) NOT NULL,
-  `phone` varchar(50) NOT NULL,
+  `user_id` bigint NOT NULL,
+  `category_id` bigint NOT NULL,
+  `city_id` bigint NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text,
+  `price` decimal(10,2) NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
+  `status` enum('active','pending','sold','archived') NOT NULL DEFAULT 'active',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `listings`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `listings` WRITE;
+/*!40000 ALTER TABLE `listings` DISABLE KEYS */;
+/*!40000 ALTER TABLE `listings` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
